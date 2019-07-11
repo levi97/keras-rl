@@ -56,7 +56,7 @@ class AbstractDQNAgent(Agent):
     def process_state_batch(self, batch):
         batch = np.array(batch)
         if self.processor is None:
-            return batch
+            return np.squeeze(batch, axis=1)
         return self.processor.process_state_batch(batch)
 
     def compute_batch_q_values(self, state_batch):
