@@ -169,7 +169,7 @@ class EpsGreedyQPolicy(Policy):
         
         if self.eps > 0.06:
             self.eps -= int(self.agent.steps/100)*0.05
-            return self.eps
+            print(self.eps)
             
         return action
             
