@@ -149,6 +149,8 @@ class EpsGreedyQPolicy(Policy):
     def __init__(self, eps=.1):
         super(EpsGreedyQPolicy, self).__init__()
         self.eps = eps
+        print(self.eps)
+        self.count = 0
 
     def select_action(self, q_values):
         """Return the selected action
@@ -166,10 +168,14 @@ class EpsGreedyQPolicy(Policy):
             action = np.random.randint(0, nb_actions)
         else:
             action = np.argmax(q_values)
+            
+        self.count += 1
         
-        if self.eps > 0.15:
-            self.eps -= int(self.agent.step/10000)*0.1
-            print('EPS: ' + str(self.eps) + 'STEP: ' + str(self.agent.step))
+        if self.eps > 0.15 and self.count == 10000:
+            self.eps -= 0.1
+            print(self.eps)
+            self.count = 0
+            
         return action
             
     def get_config(self):
