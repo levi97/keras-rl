@@ -167,7 +167,10 @@ class EpsGreedyQPolicy(Policy):
         else:
             action = np.argmax(q_values)
         return action
-
+           
+        if(self.eps > 0.05):
+            self.eps = self.eps - int(self.agent.steps/10000)*0.05
+            
     def get_config(self):
         """Return configurations of EpsGreedyQPolicy
 
