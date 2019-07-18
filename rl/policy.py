@@ -166,6 +166,8 @@ class EpsGreedyQPolicy(Policy):
             action = np.random.randint(0, nb_actions)
         else:
             action = np.argmax(q_values)
+        if self.eps > 0.15:
+            self.eps -= int(self.agent.step/10000)*0.1
         return action
             
     def get_config(self):
