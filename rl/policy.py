@@ -173,7 +173,7 @@ class EpsGreedyQPolicy(Policy):
         
         if self.eps > 0.15 and self.count == 10000:
             self.eps -= 0.1
-            print(self.eps)
+            print('Current Epsilon: ' + str(self.eps))
             self.count = 0
             
         return action
