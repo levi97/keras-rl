@@ -168,8 +168,7 @@ class EpsGreedyQPolicy(Policy):
             action = np.argmax(q_values)
         
         if self.eps > 0.06:
-            self.eps -= int(self.agent.step/100)*0.05
-            print(self.eps)
+            self.eps -= int(self.agent.step/7500)*0.05
             
         return action
             
